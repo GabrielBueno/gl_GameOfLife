@@ -9,10 +9,10 @@
 #include "matrix.h"
 #include "gol.h"
 
-#define GRID_WIDTH  168
-#define GRID_HEIGHT 76
-#define CELL_WIDTH  10
-#define CELL_HEIGHT 10
+#define GRID_WIDTH  160
+#define GRID_HEIGHT 110
+#define CELL_WIDTH  5
+#define CELL_HEIGHT 5
 
 uint32_t matrix[GRID_WIDTH * GRID_HEIGHT];
 
@@ -95,18 +95,6 @@ void init_vbos() {
                 _x                * x_ratio - 1.0f, (_y + CELL_HEIGHT) * y_ratio - 1.0f, // bottom-left
                 (_x + CELL_WIDTH) * x_ratio - 1.0f, (_y + CELL_HEIGHT) * y_ratio - 1.0f  // bottom-right
             };
-
-            printf("%f - %f\n", (x + CELL_WIDTH) * x_ratio - 1.0f, y * y_ratio - 1.0f);
-
-            // GLfloat vertices[] = {
-            //     x               , y, // top-left
-            //     (x + CELL_WIDTH), y, // top-right
-            //     (x + CELL_WIDTH), (y + CELL_HEIGHT), // bottom-right
-
-            //     x               , y                , // top-left
-            //     x               , (y + CELL_HEIGHT), // bottom-left
-            //     (x + CELL_WIDTH), (y + CELL_HEIGHT)  // bottom-right
-            // };
 
             glBindBuffer(GL_ARRAY_BUFFER, vbos[y * GRID_WIDTH + x]);
             glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -196,7 +184,7 @@ void init() {
 }
 
 void render() {
-    glClearColor(0.8, 0.6, 0.4, 1.0);
+    glClearColor(0.84, 0.78, 0.66, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(program);
@@ -229,7 +217,7 @@ void main_loop() {
 
         render();
 
-        if (SDL_GetTicks() - last_tick >= 0) {
+        if (SDL_GetTicks() - last_tick >= 100) {
             gol_iterate(matrix, GRID_WIDTH, GRID_HEIGHT);
 
             last_tick = SDL_GetTicks();
