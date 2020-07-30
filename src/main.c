@@ -9,8 +9,8 @@
 #include "matrix.h"
 #include "gol.h"
 
-#define GRID_WIDTH  160
-#define GRID_HEIGHT 110
+#define GRID_WIDTH  384
+#define GRID_HEIGHT 216
 #define CELL_WIDTH  5
 #define CELL_HEIGHT 5
 
