@@ -1,4 +1,4 @@
-#gl\_GameOfLife
+# gl\_GameOfLife
 
 This is an implementation of the **Conway's Game of Life** using **OpenGL**. The purpose of this project is to gain a better grasp of the OpenGL's basic features.
 
